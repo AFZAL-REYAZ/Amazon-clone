@@ -1,0 +1,17 @@
+.carousel-inner{
+    height: 360px;
+}
+.carousel-inner img{
+    height: 360px;
+}
+.footer_main_box{
+    display: flex;
+    background-color: black;
+    justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 600px){
+    .carousel-inner{
+        height: 200px;
+    }
+}
