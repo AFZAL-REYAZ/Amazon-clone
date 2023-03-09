@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import { useState } from "react";
+import AddToCart from "./Components/AddToCart";
+import Home from "./Components/Home";
+import {
+  BrowserRouter ,
+  Routes, Route,
+} from "react-router-dom";
+import SineUp from "./Components/SignUp";
+import Login from "./Components/Login";
+import Protected from "./Components/Protected";
 
 function App() {
+  const [searchdatas, setSearchdatas] = useState("");
+  const [clicksearch, setClicksearch] = useState("");
+  const [addtocart, setAddtocart] = useState([]);
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <BrowserRouter>
+   <Navbar setSearchdatas2={setSearchdatas} addtocart={addtocart} setClicksearch2={setClicksearch}/>
+   <Routes>
+   <Route path="/" element={<Protected Component={Home} searchdatasvar={searchdatas} setAddtocart2={setAddtocart} clicksearch={clicksearch}/>} />
+   <Route path="/addtocart" element={<Protected Component={AddToCart} />} />
+   <Route path="/SineUp" element={<SineUp/>} />
+   <Route path="/login" element={<Login/>} />
+   </Routes>
+   </BrowserRouter>
   );
 }
 
